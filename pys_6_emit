@@ -1,0 +1,69 @@
+import sys
+from PySide6.QtWidgets import (QApplication, QMainWindow, QWidget,QVBoxLayout,
+  QHBoxLayout,QGridLayout,QPushButton,QFormLayout,
+  QLineEdit,QLabel,QTextEdit
+)
+from PySide6.QtCore import QObject,Signal,QTimer,Qt
+from layout_color_widget import Color
+
+
+
+class ShowStatus(QLabel):
+    def __init__(self):
+        super().__init__()
+        self.setWindowTitle('Timer Update')
+        # initialize timer
+        self.timer = QTimer()
+        self.status_state = 'OK'
+        self.setGeometry(100,100,200,100)
+        self.timer.setInterval(3000)
+        self.timer.start()
+        # self.timer.setInterval(4000)
+        self.timer.timeout.connect(self.handle_heartbeat)
+        
+
+        # self.timer.start()
+    def handle_heartbeat(self):
+        if self.status_state == 'PING':
+            self.timer.setInterval(4000)
+            self.status_state = 'OK'
+            self.setText('OK')
+        else:
+            self.status_state = 'PING'
+            self.timer.setInterval(2000)
+            self.setText('PING')
+            
+            
+            # self.setText('PING')
+            # self.setText("OK")
+            # self.timer.setInterval(3000)
+            # self.timer.start()
+            # self.setText('PING')
+
+
+        # self.timer.timeout.connect(self.update_signal)
+        # self.timer.start()
+        # self.timer.stop()
+    # def update_signal(self):
+    #     self.timer.setInterval(2000)
+    #     self.setText("Ok")
+    #     self.timer.stop()
+
+app = QApplication(sys.argv)
+window = ShowStatus()
+window.show()
+app.exec()
+
+# class Counter(QObject):
+#     # def __init__(self):
+#     updated = Signal(int)
+
+#     def increase(self,number):
+#         number += 1
+
+#         self.updated.emit(number)
+
+# class MainWindow(QMainWindow):
+#     def __init__(self):
+#         super().__init__()
+
