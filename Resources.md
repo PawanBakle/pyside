@@ -5,3 +5,7 @@
 
   
 
+[ class references ](https://learn.foundry.com/nuke/developers/80/pythonreference/PySide.QtGui.QFrame.Shape-class.html)
+
+
+[signals and slots](https://zetcode.com/gui/pysidetutorial/eventsandsignals/)
