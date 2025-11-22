@@ -16,3 +16,5 @@
 
 [cpp docs](https://doc.qt.io/qt-6/signalsandslots.html)
 
+[observer pattern](https://refactoring.guru/design-patterns/observer/python/example)
+
